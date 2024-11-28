@@ -4,6 +4,7 @@ interface JSONRendererProps {
   data: any;
   path?: (string | number)[]; // Updated to handle both string (for object keys) and number (for array indices)
   onKeyClick: (path: (string | number)[]) => void;
+  onValueClick: (path: (string | number)[]) => void;
   filter?: string; // New prop to handle the filter text
 }
 
@@ -11,6 +12,7 @@ const JSONRenderer: React.FC<JSONRendererProps> = ({
   data,
   path = [],
   onKeyClick,
+  onValueClick,
   filter = "", // Default to an empty string if no filter is provided
 }) => {
   // Helper function to check if the key or value matches the filter
@@ -38,6 +40,7 @@ const JSONRenderer: React.FC<JSONRendererProps> = ({
                 </span>
                 :{" "}
                 <JSONRenderer
+                  onValueClick={onValueClick}
                   data={value}
                   path={[...path, index]} // Pass the updated path with index
                   onKeyClick={onKeyClick}
@@ -58,6 +61,7 @@ const JSONRenderer: React.FC<JSONRendererProps> = ({
                   </span>
                   :{" "}
                   <JSONRenderer
+                    onValueClick={onValueClick}
                     data={value}
                     path={[...path, key]} // Pass the updated path with key
                     onKeyClick={onKeyClick}

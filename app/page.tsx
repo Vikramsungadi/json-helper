@@ -57,11 +57,11 @@ export default function HomePage() {
     }
   };
 
-  const handleKeyClick = (path: string[]) => {
+  const handleKeyClick = (path: (string | number)[]) => {
     setAccessorPath(path.join("."));
   };
 
-  const handleValueClick = (value: any) => {
+  const handleValueClick = (value: (string | number)[]) => {
     alert(`Value copied: ${JSON.stringify(value)}`);
   };
 

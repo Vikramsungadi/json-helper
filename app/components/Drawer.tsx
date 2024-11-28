@@ -15,6 +15,7 @@ interface DrawerProps {
   favorites: { id: string; name: string; data: any; pinned: boolean }[];
   onFavoriteClick: (favoriteData: any) => void; // Handler passed from HomePage
   handlePinToggle: (favoriteData: any) => void; // Handler passed from HomePage
+  handleDeleteFavorite: (favoriteData: any) => void; // Handler passed from HomePage
 }
 
 const Drawer: React.FC<DrawerProps> = ({

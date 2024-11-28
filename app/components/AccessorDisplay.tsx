@@ -35,10 +35,12 @@ const AccessorDisplay: React.FC<AccessorDisplayProps> = ({ path, name }) => {
   };
 
   return (
-    <div className="relative mt-4">
-      <Card className="sticky bottom-0 p-2">
-        {/* Checkbox from ShadCN */}
-        <div className="absolute top-2 right-2 flex items-center space-x-2">
+    <Card className="sticky bottom-2 p-2 mt-4 ">
+      {/* Checkbox from ShadCN */}
+
+      <CardHeader className="p-2 flex flex-row justify-between items-center w-full">
+        <CardTitle>Path</CardTitle>
+        <div>
           <Checkbox
             checked={isChecked}
             onCheckedChange={handleCheckboxChange} // Update state when checkbox is clicked
@@ -46,17 +48,13 @@ const AccessorDisplay: React.FC<AccessorDisplayProps> = ({ path, name }) => {
           />
           <label className="text-xs">{name}</label>
         </div>
-
-        <CardHeader className="p-2">
-          <CardTitle>Path</CardTitle>
-        </CardHeader>
-        <CardContent onClick={handleCopy} className="cursor-copy p-2">
-          <code className="text-sm text-gray-800">
-            {getFormattedPath(path) || "Click on a key to view its path"}
-          </code>
-        </CardContent>
-      </Card>
-    </div>
+      </CardHeader>
+      <CardContent onClick={handleCopy} className="cursor-copy p-2">
+        <code className="text-sm text-gray-800">
+          {getFormattedPath(path) || "Click on a key to view its path"}
+        </code>
+      </CardContent>
+    </Card>
   );
 };
 
